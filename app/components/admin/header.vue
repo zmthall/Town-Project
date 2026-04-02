@@ -38,7 +38,7 @@ const handleLogout = async () => {
         </p>
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex flex-wrap items-center gap-3">
         <NuxtLink to="/admin" class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-900">
           Dashboard
         </NuxtLink>
@@ -47,8 +47,8 @@ const handleLogout = async () => {
           Users
         </NuxtLink>
 
-        <NuxtLink to="/admin/users/create" class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-900">
-          Create User
+        <NuxtLink to="/admin/properties" class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-900">
+          Properties
         </NuxtLink>
 
         <button type="button" :disabled="isSubmittingLogout" class="inline-flex items-center justify-center rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60" @click="handleLogout">
