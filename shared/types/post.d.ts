@@ -1,5 +1,4 @@
 declare module "#property-post" {
-
   type BuildingType =
     | "residential"
     | "commercial"
@@ -69,10 +68,16 @@ declare module "#property-post" {
     updatedAt: string;
   }
 
+  interface PropertyListRecord extends PropertyRecord {
+    primaryImagePath: string | null;
+    issueCodes: PropertyIssueCode[];
+  }
+
   interface PropertyIssueRecord {
     id: number;
     propertyId: number;
     issueCode: PropertyIssueCode;
+    createdAt?: string;
   }
 
   interface PropertyImageRecord {
@@ -100,6 +105,8 @@ declare module "#property-post" {
     occupantCount: number | null;
     occupantComment: string | null;
     notes: string | null;
+    createdAt?: string;
+    updatedAt?: string;
   }
 
   interface PropertyWithRelations extends PropertyRecord {
@@ -159,6 +166,28 @@ declare module "#property-post" {
     notes?: string | null;
   }
 
+  interface PaginationMeta {
+    page: number;
+    perPage: number;
+    totalItems: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+  }
+
+  type PropertyIssueSummary = Partial<Record<PropertyIssueCode, number>>;
+
+  interface PaginatedPropertyListResponse {
+    success: true;
+    properties: PropertyListRecord[];
+    pagination: PaginationMeta;
+    issueSummary: PropertyIssueSummary;
+  }
+
+  interface SinglePropertyResponse {
+    success: true;
+    property: PropertyWithRelations;
+  }
 }
 
-export {}
+export {};
